@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-Reflector → Motor + 状態トーク付き
-フォトリフレクタの値でモータを制御しながら、
-「左旋回中」「右旋回中」「前進中」などをリアルタイム表示。
+Reflector → Motor + 状態トーク付き（修正版）
+- gpiozero 旧バージョン対応
+- pwm=True を削除し、互換性を確保
 """
 
 import time
@@ -18,11 +20,12 @@ PIN_AIN1, PIN_AIN2 = 6, 5
 PIN_BIN1, PIN_BIN2 = 26, 27
 
 # --- 準備 ---
+# pwm=True は古いgpiozeroではエラーになるため削除
 robot = Robot(left=(PIN_AIN1, PIN_AIN2),
-              right=(PIN_BIN1, PIN_BIN2), pwm=True)
+              right=(PIN_BIN1, PIN_BIN2))
 sensors = [MCP3004(channel=i) for i in range(4)]
 
-print("=== Reflector → Motor with Talk ===")
+print("=== Reflector → Motor with Talk (Fixed) ===")
 print("Ctrl+C で停止")
 
 def norm(v):
@@ -51,7 +54,6 @@ try:
             state = "🛑 停止中"
 
         robot.value = (left, right)
-
         print(f"L={left_mean:.2f}  R={right_mean:.2f}  out=({left:.2f},{right:.2f})  {state}")
         time.sleep(0.1)
 
