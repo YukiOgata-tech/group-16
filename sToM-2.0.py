@@ -10,29 +10,21 @@ import argparse
 from statistics import fmean
 from gpiozero import MCP3004, Robot
 
-# ======== 調整パラメータ ========
-
-# センサチャンネル割り当て（左→右の順に並べる）
+# 調整パラメータ 
 SENSOR_CHANNELS = [0, 1, 2, 3]
-
-# 白い面で値が大きくなるなら True、黒い面で大きいなら False にする
 WHITE_IS_HIGH = True
-
-# しきい値（ライン検出判定に使用）
 THRESH = 0.55
 
-# 平滑化（移動平均）の窓サイズ（0 or 1 なら平滑化なし）
 SMOOTH_N = 4
 
 # 速度係数
 BASE_SPEED = 0.45        # 直進時の基準速度 0..1
-STEER_GAIN = 0.8         # ライン偏差に対する左右差の強さ 0..2 くらい
-DEADBAND = 0.05          # 偏差がこの範囲なら直進扱い
+STEER_GAIN = 0.8         
+DEADBAND = 0.05          
 
-# 喪失検出（全センサが「ラインっぽくない」状態が続いたら停止）
 LOSS_COUNT_LIMIT = 6     # 連続フレーム数
 
-# ソフトスタート
+# スタート遅延用
 RAMP_TIME = 0.6          # 立ち上げ時間[s]
 
 # モータピン（IN/INモード）
@@ -40,12 +32,9 @@ PIN_AIN1 = 6
 PIN_AIN2 = 5
 PIN_BIN1 = 26
 PIN_BIN2 = 27
-# =================================
 
 
 def normalize(raw, white_is_high=True):
-    """gpiozeroのMCP3004.valueは[0..1]想定。
-    白で高い→そのまま、黒で高い→反転"""
     if white_is_high:
         return float(raw)
     return 1.0 - float(raw)
@@ -96,7 +85,6 @@ def mix_to_motors(base_speed, steer, gain):
 
 def ramp(robot, target_left, target_right, t_ramp=0.5, steps=12):
     """現在速度からtargetまで滑らかに遷移"""
-    # gpiozeroは現在値を直接は取れないので簡易ランプ：0→target
     for k in range(1, steps+1):
         a = k/steps
         robot.value = (target_left*a, target_right*a)
