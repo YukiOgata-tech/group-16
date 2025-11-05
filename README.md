@@ -4,11 +4,11 @@
 
 # git 操作
 1. リポジトリを取得（初回のみ）
-git clone git@github.com:YukiOgata-tech/group-16.git
-cd group-16
+- git clone git@github.com:YukiOgata-tech/group-16.git
+- cd group-16
 
 - 🔁 GitHubの変更を取り込む（他で編集されたとき）
-git pull origin master --rebase
+- git pull origin master --rebase
 
 
 2. 💬 Tips
