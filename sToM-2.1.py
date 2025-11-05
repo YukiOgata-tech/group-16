@@ -1,5 +1,9 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-感覚的には「左が暗い → 右に寄せる」「右が暗い → 左に寄せる」。
+Simple Reflector → Motor Control (Fixed Version)
+- gpiozero旧バージョン対応
+- pwm=True削除済み
 """
 
 import time
@@ -16,10 +20,10 @@ PIN_BIN1, PIN_BIN2 = 26, 27
 
 # --- 準備 ---
 robot = Robot(left=(PIN_AIN1, PIN_AIN2),
-              right=(PIN_BIN1, PIN_BIN2), pwm=True)
+              right=(PIN_BIN1, PIN_BIN2))
 sensors = [MCP3004(channel=i) for i in range(4)]
 
-print("=== Reflector → Motor ===")
+print("=== Reflector → Motor (Fixed) ===")
 print("Ctrl+C で停止")
 
 def norm(v):  # 白黒反転設定
