@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Weighted-Center based line follower (MCP3004 + DRV8835 + gpiozero).
 - 4chのフォトリフレクタを読みつつ、ライン位置の“重心”を求めて左右モータを連続制御
