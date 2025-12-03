@@ -1,0 +1,19 @@
+[Unit]
+Description=Line Follower Robot for Mid-term Presentation
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/middle
+ExecStart=/usr/bin/python3 /home/pi/middle/line_follower_main.py
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+# 環境変数（必要に応じて追加）
+Environment="PYTHONUNBUFFERED=1"
+
+[Install]
+WantedBy=multi-user.target
