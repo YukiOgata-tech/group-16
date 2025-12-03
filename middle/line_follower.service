@@ -1,12 +1,12 @@
 [Unit]
-Description=Line Follower Robot for Mid-term Presentation
+Description=Line Follower Robot for Mid-term Pre
 After=network.target
 
 [Service]
 Type=simple
-User=pi
-WorkingDirectory=/home/pi/middle
-ExecStart=/usr/bin/python3 /home/pi/middle/line_follower_main.py
+User=rspi16
+WorkingDirectory=/home/rspi16/EicdesignLab/group-16/middle
+ExecStart=/usr/bin/python3 /home/rspi-16/EicdesignLab/group-16/middle/line_follower_main.py
 Restart=on-failure
 RestartSec=5
 StandardOutput=journal
