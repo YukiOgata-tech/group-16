@@ -15,7 +15,7 @@ CROSS_BLACK_COUNT = 3       # 交差点とみなす黒センサー数
 CROSS_FORWARD = 0.35        # 交差点直進時の速度
 
 # 走行速度系
-BASE_SPEED = 0.20           # 基本速度（直進時）
+BASE_SPEED = 0.30           # 基本速度（直進時）
 MIN_BASE_SPEED = 0.12       # 最低速度（急カーブで減速してもここまで）
 SPEED_SCALE = 1.00          # 全体速度スケール（0.5〜1.2 目安）
 
