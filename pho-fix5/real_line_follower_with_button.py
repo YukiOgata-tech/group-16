@@ -10,27 +10,6 @@ Raspberry Pi 実機用に移植し、タクトスイッチで制御できるよ�
     - 短押し（1秒未満）: 一時停止/再開の切り替え
     - 長押し（3秒以上）: シャットダウン
 
-制御方式:
-    - 固定行列マッピング（パラメータ調整不要）
-    - 交差点検出機能
-    - シンプルで安定した動作
-
-ハードウェア要件:
-    - Raspberry Pi Zero W
-    - MCP3004 ADC (4ch)
-    - DRV8835 モータードライバー
-    - LBR-127HLD フォトリフレクタ × 4
-    - タクトスイッチ × 1（GPIO 3 に接続）
-
-実行方法:
-    $ python3 real_line_follower_with_button.py
-
-停止方法:
-    - タクトスイッチ短押し（一時停止）
-    - タクトスイッチ長押し（シャットダウン）
-    - Ctrl+C（プログラム終了）
-
-All rights reserved 2019-2025 (c) Shogo MURAMATSU / EicDesignLab contributors
 """
 import numpy as np
 from gpiozero import MCP3004, Robot, Button, LED
