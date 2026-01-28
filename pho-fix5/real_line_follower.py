@@ -101,16 +101,14 @@ class LFController:
     @property
     def photorefs(self):
         return self._prs
-
     @photorefs.setter
     def photorefs(self, prs):
         self._prs = prs
 
-
 def main():
-    """メイン関数"""
+    """メイン"""
     print("=" * 50)
-    print("実機用プログラム")
+    print("実機用プログラムdisplay確認用のプリントコード")
     print("ごーごー。" * 10)
     print("初期化中...")
 
@@ -119,9 +117,9 @@ def main():
     photorefs = [MCP3004(channel=idx) for idx in range(NUM_PHOTOREFS)]
 
     # 左右モーター設定
-    print(f"MD初期化中...")
-    print(f"  左: GPIO{PIN_AIN1}, GPIO{PIN_AIN2}")
-    print(f"  右: GPIO{PIN_BIN1}, GPIO{PIN_BIN2}")
+    print(f"初期化中...")
+    print(f" 左:GPIO{PIN_AIN1}, GPIO{PIN_AIN2}")
+    print(f" 右:GPIO{PIN_BIN1}, GPIO{PIN_BIN2}")
     motors = Robot(left=(PIN_AIN1, PIN_AIN2), right=(PIN_BIN1, PIN_BIN2))
 
     # コントローラ初期化
@@ -130,7 +128,7 @@ def main():
 
     print("=" * 50)
     print("完了！")
-    print("除雪開始するお（機体は除雪機をイメージしているはず。）")
+    print("除雪開始（機体は除雪機イメージ。）")
     print("停止 Ctrl+C")
     print("=" * 50)
 
@@ -146,7 +144,7 @@ def main():
         pause()
     except KeyboardInterrupt:
         print("\n" + "=" * 50)
-        print("終了します")
+        print("終了しまsu")
         print("=" * 50)
         motors.stop()
 if __name__ == '__main__':
